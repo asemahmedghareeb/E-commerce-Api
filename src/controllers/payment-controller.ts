@@ -6,7 +6,7 @@ import { createNewCoupon, } from "../utils/stripe.ts";
 import { Order } from "../models/order.ts";
 import { CartItem } from "../models/cart_item.ts";
 import dotenv from "dotenv";
-import createStripeSession from "../utils/createCheckoutSession.js";
+import createStripeSession from "../utils/createCheckoutSession.ts";
 dotenv.config();
 import { stripe } from "../config/stripe.ts";
 const createCheckoutSession = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +23,7 @@ const createCheckoutSession = asyncHandler(async (req: Request, res: Response, n
 
         return {
             price_data: {
-                currency: "usd",
+                currency: "usd", 
                 product_data: {
                     name: cartItem.product.name,
                     images: [cartItem.product.image.url.toString()],
